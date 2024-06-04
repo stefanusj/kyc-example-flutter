@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                     color: Colors.black12,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  constraints: const BoxConstraints(maxWidth: 480),
+                  constraints: const BoxConstraints(maxWidth: 360),
                   child: Row(
                     children: <Widget>[
                       Container(
@@ -52,18 +52,23 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Identity Card',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          Text(
-                            'Personal card like identity card or Driver\'s licenses',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Identity Card',
+                              style: Theme.of(context).textTheme.titleMedium,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              'Personal card like identity card or Driver\'s licenses',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
