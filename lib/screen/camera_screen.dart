@@ -4,7 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
-import 'package:kyc/screen/result_screen.dart';
+import 'package:kyc/screen/screen.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CameraScreen extends StatefulWidget {
@@ -77,9 +77,9 @@ class _CameraScreenState extends State<CameraScreen> {
     final y = (bakedImage.height * 0.5) - (bakedImage.width * 0.5 * 0.5);
     bakedImage = img.copyCrop(bakedImage, x: x.toInt(), y: y.toInt(), width: (bakedImage.height * 0.5).toInt(), height: (bakedImage.width * 0.5).toInt());
     // End process image
-    final jpg = img.encodeJpg(bakedImage);
+    final png = img.encodePng(bakedImage);
     final directory = await getExternalStorageDirectory();
-    final file = await File('${directory!.path}/kyc.jpg').writeAsBytes(jpg);
+    final file = await File('${directory!.path}/kyc.png').writeAsBytes(png);
 
     setState(() {
       _isLoading = false;
@@ -105,11 +105,13 @@ class _CameraScreenState extends State<CameraScreen> {
               Text(
                 'Identity Card',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
               Text(
-                'Take a photo of your document',
+                'Capture a clear and high-resolution photo of your document',
                 style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
               Expanded(
