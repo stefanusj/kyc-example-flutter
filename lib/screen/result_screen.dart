@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:kyc/screen/home_screen.dart';
+import 'package:kyc/screen/screen.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -59,14 +59,20 @@ class _ResultScreenState extends State<ResultScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Your Document',
+                'Your File Result',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                'Please review the image to ensure all details are clear and legible',
+                style: Theme.of(context).textTheme.bodyMedium,
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
                 decoration: BoxDecoration(
-                  color: Colors.black12,
+                  border: Border.all(width: 4),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: ClipRRect(
